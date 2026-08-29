@@ -1,3 +1,5 @@
+from os import name
+
 from pydantic import BaseModel
 
 class Adress(BaseModel):
@@ -22,3 +24,6 @@ def show(p:patient):
     print(p.adress.house)
     print(p.adress.block)
 show(patient1)
+temp=patient1.model_dump_json(include=['name','age'])
+
+print(type(temp))
