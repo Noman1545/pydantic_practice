@@ -2,9 +2,9 @@ from pydantic import BaseModel,EmailStr,AnyUrl,Field
 from typing import Annotated
 class patient(BaseModel):
     name:Annotated[str ,Field(max_length=20,min_length=3,title='main',description='add your name')]
-    age:int
+    age:Annotated[int,Field(strict=True)]
     weight:float | None =Field(default=None,gt=30)
-    married:bool
+    married:Annotated[bool,Field(default=True)]
     diseases:list[str]
     contact:dict[str,str]
     email:EmailStr
