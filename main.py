@@ -1,9 +1,9 @@
-from pydantic import BaseModel,EmailStr,AnyUrl
-
+from pydantic import BaseModel,EmailStr,AnyUrl,Field
+from typing import Annotated
 class patient(BaseModel):
-    name:str
+    name:Annotated[str ,Field(max_length=20,min_length=3,title='main',description='add your name')]
     age:int
-    weight:float | None=None
+    weight:float | None =Field(default=None,gt=30)
     married:bool
     diseases:list[str]
     contact:dict[str,str]
